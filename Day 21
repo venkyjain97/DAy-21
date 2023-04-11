@@ -1,0 +1,35 @@
+//a) Here's the JavaScript program that creates a Promise that resolves to a random number between 1 and 10 after a delay of 1 second, and displays the resolved value in the console using the then() method:
+
+
+const randomPromise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    const randomNum = Math.floor(Math.random() * 10) + 1;
+    resolve(randomNum);
+  }, 1000);
+});
+
+randomPromise.then((num) => {
+  console.log(num);
+});
+
+//b) Here's the modified program that handles the case where the promise is rejected, by adding a catch() method that displays an error message in the console:
+
+
+const randomPromise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    const randomNum = Math.floor(Math.random() * 10) + 1;
+    if (randomNum < 5) {
+      reject("Error: Random number is less than 5");
+    } else {
+      resolve(randomNum);
+    }
+  }, 1000);
+});
+
+randomPromise
+  .then((num) => {
+    console.log(num);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
